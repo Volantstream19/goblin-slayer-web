@@ -17,6 +17,7 @@
         <!-- see https://fonts.google.com/ -->
 
         <!-- css -->
+        <link rel="stylesheet" href="styles/clashFighter.css" />
         <link rel="stylesheet" href="styles/reset.css" />
         <link rel="stylesheet" href="styles/global.css" />
         <!-- add link for page specific css -->
@@ -25,9 +26,47 @@
     <body>
         <header>
             <img class="logo" src="assets/mini-g3b921841d_1920.png" alt="logo" />
-            <h1>Clash Fighters</h1>
+            <h1>Goblin fighter</h1>
         </header>
 
-        <main></main>
+        <main>
+            <section class="banner" id="Scoreboard">Your enemies are afoot</section>
+            <section class="banner" id="Result">You have killed 100000 enemies</section>
+            <div id="main-section">
+                <section class="player" id="player">
+                    <img id="player-image" class="player-image" src="assets/miniPekka.png" />
+                </section>
+
+                <section class="goblin">
+                    <form id="goblin-name" class="goblin-form">
+                        <label class="inputBox">
+                            <div class="inputResult">Spawn Enemy</div>
+                            <div class="enemySpawner">
+                                <input name="name" />
+                                <button>Bruh</button>
+                            </div>
+                        </label>
+                    </form>
+                    <ul id="goblin-list">
+                        <li class="goblin-card">
+                            <span class="goblin-hp">1</span>
+                            <img src="assets/goblin.png" />
+                            <span class="name">h</span>
+                        </li>
+                        <li class="goblin-card">
+                            <span class="goblin-hp">1</span>
+                            <img src="assets/goblin.png" />
+                            <span class="name">h</span>
+                        </li>
+                        <li class="goblin-card">
+                            <span class="goblin-hp">1</span>
+                            <img src="assets/goblin.png" />
+                            <span class="name">h</span>
+                            <button id="remove-button">Remove the Dead</button>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </main>
     </body>
 </html>

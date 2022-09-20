@@ -1,0 +1,67 @@
+.banner {
+    display: grid;
+    place-content: center;
+    padding-bottom: 3em;
+}
+
+.player-image {
+    background-image: none;
+    width: 30%;
+    min-height: 10%;
+}
+
+.player {
+    margin-top: 75px;
+    margin-left: 55px;
+    flex-direction: column;
+}
+
+.goblin-form {
+    text-align: right;
+    height: 50px;
+}
+
+.inputBox {
+    display: grid;
+}
+
+.goblin-list {
+    display: grid;
+    grid-template-columns: 30px 30px 1fr;
+    place-content: right;
+}
+
+.goblin-hp {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#goblin-list {
+    display: grid;
+    align-content: center;
+    gap: 10px;
+}
+
+#goblin-list img {
+    height: auto;
+    width: 100px;
+    display: grid;
+}
+
+#main-section {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px 0px;
+}
+
+.goblin-card {
+    display: grid;
+    padding-right: 4em;
+    justify-items: end;
+}
+
+#remove-button {
+    display: grid;
+    justify-items: end;
+}
