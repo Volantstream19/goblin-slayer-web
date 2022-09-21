@@ -2,9 +2,9 @@
 
 /* Get DOM Elements */
 const addGoblinForm = document.getElementById('goblin-name');
-
+const resultDisplay = document.getElementById('goblin-name');
 /* State */
-
+let result = '';
 let goblins = [
     {
         name: 'John',
@@ -22,19 +22,6 @@ let goblins = [
         hp: 4,
     },
 ];
-
-const goblinTypes = [
-    drunkard,
-    drunkard,
-    drunkard,
-    brawler,
-    brawler,
-    brawler,
-    brawler,
-    cyclops,
-    cyclops,
-    cyclops,
-];
 const brawler = {
     type: 'brawler',
     hp: 5,
@@ -48,21 +35,34 @@ const cyclops = {
     type: 'cyclops',
     hp: 4,
 };
+
+const goblinTypes = [
+    drunkard,
+    drunkard,
+    drunkard,
+    brawler,
+    brawler,
+    brawler,
+    cyclops,
+    cyclops,
+    cyclops,
+];
 /* Events */
 addGoblinForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const addGoblin = new FormData(addGoblinForm);
+    const data = new FormData(addGoblinForm);
+    const goblinName = data.get('name');
     const goblinType = getRandomItem(goblinTypes);
-    const goblin = {
-        name: FormData.get('name'),
+    const newGoblin = {
+        name: goblinName,
         type: goblinType.type,
         hp: goblinType.hp,
     };
-    goblin.push(goblin);
+    goblins.push(newGoblin);
 
-    result = `${goblin.name} The ${goblin.Type} has arrived`;
+    console.log(goblins);
+    result = `${goblins.name} The ${goblins.Type} has arrived`;
 
-    displayGoblins();
     displayResult();
 
     addGoblinForm.reset();
@@ -77,4 +77,9 @@ function getRandomItem(array) {
 function getRandomNumber(choices) {
     return Math.floor(Math.random() * choices);
 }
+
+function displayResult() {
+    resultDisplay.textContent = result;
+}
+
 // (don't forget to call any display functions you want to run on page load!)
