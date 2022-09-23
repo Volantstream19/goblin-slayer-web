@@ -3,7 +3,8 @@ import { getRandomItem, getRandomNumber } from './utils.js';
 /* Get DOM Elements */
 const playerHp = document.getElementById('player-hp');
 const playerImage = document.getElementById('player-image');
-const result = document.getElementById('Reuslt');
+const result = document.getElementById('Result');
+const scoreboard = document.getElementById('Scoreboard');
 /* State */
 let result = '';
 let player = {
@@ -59,6 +60,10 @@ function displayResult() {
     result.textContent = result;
 }
 
+function displayScoreboard() {
+    scoreboard.textContent = `You have killed ${defeated} goblins.`;
+}
+
 function displayPlayer() {
     playerHp.textContent = Math.max(0, player.hp);
     if (player.hp < 1) {
@@ -71,3 +76,4 @@ function displayPlayer() {
 // testing
 displayPlayer();
 displayResult();
+displayScoreboard();
