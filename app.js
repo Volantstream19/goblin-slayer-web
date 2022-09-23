@@ -3,7 +3,9 @@ import { getRandomItem, getRandomNumber } from './utils.js';
 /* Get DOM Elements */
 const playerHp = document.getElementById('player-hp');
 const playerImage = document.getElementById('player-image');
+const result = document.getElementById('Reuslt');
 /* State */
+let result = '';
 let player = {
     type: 'pekka',
     hp: 10,
@@ -53,6 +55,10 @@ const goblinTypes = [
 ];
 /* Events */
 
+function displayResult() {
+    result.textContent = result;
+}
+
 function displayPlayer() {
     playerHp.textContent = Math.max(0, player.hp);
     if (player.hp < 1) {
@@ -64,3 +70,4 @@ function displayPlayer() {
 // (don't forget to call any display functions you want to run on page load!)
 // testing
 displayPlayer();
+displayResult();
