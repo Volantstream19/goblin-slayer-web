@@ -1,10 +1,13 @@
 /* Imports */
-
+import { getRandomItem, getRandomNumber } from './utils.js';
 /* Get DOM Elements */
-const addGoblinForm = document.getElementById('goblin-name');
-const resultDisplay = document.getElementById('goblin-name');
+const playerHp = document.getElementById('player-hp');
+const playerImage = document.getElementById('player-image');
 /* State */
-let result = '';
+let player = {
+    type: 'pekka',
+    hp: 10,
+};
 let goblins = [
     {
         name: 'John',
@@ -22,6 +25,7 @@ let goblins = [
         hp: 4,
     },
 ];
+
 const brawler = {
     type: 'brawler',
     hp: 5,
@@ -48,39 +52,15 @@ const goblinTypes = [
     cyclops,
 ];
 /* Events */
-addGoblinForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(addGoblinForm);
-    const goblinName = data.get('name');
-    const goblinType = getRandomItem(goblinTypes);
-    const newGoblin = {
-        name: goblinName,
-        type: goblinType.type,
-        hp: goblinType.hp,
-    };
-    goblins.push(newGoblin);
 
-    console.log(goblins);
-    result = `${goblins.name} The ${goblins.Type} has arrived`;
-
-    displayResult();
-
-    addGoblinForm.reset();
-});
-/* Display Functions */
-function getRandomItem(array) {
-    const random = getRandomNumber(array.length);
-    const item = array[random];
-    return item;
+function displayPlayer() {
+    playerHp.textContent = Math.max(0, player.hp);
+    if (player.hp < 1) {
+        playerImage.src = 'assets/deadPekka.png';
+    } else {
+        playerImage.src = 'assets/miniPekka.png';
+    }
 }
-
-function getRandomNumber(choices) {
-    return Math.floor(Math.random() * choices);
-}
-
-function displayResult() {
-    resultDisplay.textContent = result;
-}
-
 // (don't forget to call any display functions you want to run on page load!)
 // testing
+displayPlayer();
