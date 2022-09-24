@@ -58,8 +58,8 @@ const goblinTypes = [
     cyclops,
 ];
 
-const playerMoves = [0, 1, 1, 2, 2, 2, 2, 4, 4, 4, 5, 5, 10];
-const goblinMoves = [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 10];
+const playerMoves = [2];
+const goblinMoves = [1];
 /* Events */
 function displayPlayer() {
     playerHp.textContent = Math.max(0, player.hp);
@@ -83,11 +83,10 @@ function displayGoblin() {
 
     for (let goblin of goblins) {
         const goblinEl = renderGoblin(goblin);
-        console.log(goblinEl);
+
         goblinDisplay.append(goblinEl);
 
         goblinEl.addEventListener('click', () => {
-            console.log('clicked');
             if (goblin.hp < 1) {
                 result = `C'mon man he's already dead.`;
                 displayResult();
@@ -102,13 +101,13 @@ function displayGoblin() {
             result = '';
 
             if (goblinMove === 0) {
-                result += `${goblin.name} has missed`;
+                result += `${goblin.name} has missed. `;
             } else {
-                result += `${goblin.name} has hit you and did ${goblinMove} hitpoints`;
+                result += `${goblin.name} has hit you and did ${goblinMove} hitpoints. |  `;
             }
 
             if (playerMove === 0) {
-                result += 'Wow you actually missed. ';
+                result += `Wow you actually missed. `;
             } else {
                 result += `You've hit ${goblin.name} and did ${playerMove} in damage. `;
             }
@@ -118,6 +117,8 @@ function displayGoblin() {
                 displayScoreboard();
             }
             displayPlayer();
+            displayResult();
+            displayGoblin();
         });
     }
 }
