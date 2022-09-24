@@ -38,12 +38,12 @@
                     <img id="player-image" class="player-image" src="assets/miniPekka.png" />
                 </section>
 
-                <section class="goblin">
+                <section id="goblin">
                     <form id="add-goblin-form" class="goblin-form">
                         <label class="inputBox">
                             <div class="inputResult">Spawn Enemy</div>
                             <div class="enemySpawner">
-                                <input name="name" />
+                                <input name="name" required />
                                 <button>Bruh</button>
                             </div>
                         </label>
@@ -63,9 +63,11 @@
                             <span class="goblin-hp">1</span>
                             <img src="assets/goblin.png" />
                             <span class="name">h</span>
-                            <button id="remove-button">Remove the Dead</button>
-                        </li>
-                    </ul>
+                        </button>
+                    </li>
+                </ul>
+                <button id="remove-button" class="remove-button">
+                    Remove the Dead </button>
                 </section>
             </div>
         </main>
