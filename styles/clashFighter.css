@@ -16,9 +16,9 @@
     flex-direction: column;
 }
 
-.stat {
+.name {
     font-weight: bold;
-    font-size: 2.5em;
+    font-size: 1.5em;
 }
 
 .goblin-form {

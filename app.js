@@ -1,5 +1,5 @@
 /* Imports */
-import { getRandomItem, getRandomNumber } from './utils.js';
+import { getRandomItem } from './utils.js';
 import { renderGoblin } from './render.js';
 /* Get DOM Elements */
 const playerHp = document.getElementById('player-hp');
@@ -8,6 +8,7 @@ const resultDisplay = document.getElementById('Result');
 const scoreboard = document.getElementById('Scoreboard');
 const goblinDisplay = document.getElementById('goblin-list');
 const addGoblinForm = document.getElementById('add-goblin-form');
+const removeButton = document.getElementById('remove-button');
 /* State */
 let defeated = 0;
 let result = '';
@@ -75,7 +76,6 @@ addGoblinForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(addGoblinForm);
     const newGoblinTypes = getRandomItem(goblinTypes);
-    console.log(newGoblinTypes);
 
     const goblin = {
         name: formData.get('name'),
@@ -87,6 +87,18 @@ addGoblinForm.addEventListener('submit', (e) => {
     result = `${goblin.name} the ${goblin.type} has arrived`;
     displayGoblin();
     displayResult();
+});
+
+removeButton.addEventListener('click', () => {
+    const aliveGoblins = [];
+
+    for (const goblin of goblins) {
+        if (goblin.hp > 0) {
+            aliveGoblins.push(goblin);
+        }
+    }
+    goblins = aliveGoblins;
+    displayGoblin();
 });
 
 function displayResult() {
