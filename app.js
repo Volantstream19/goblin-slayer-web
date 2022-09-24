@@ -4,10 +4,11 @@ import { renderGoblin } from './render.js';
 /* Get DOM Elements */
 const playerHp = document.getElementById('player-hp');
 const playerImage = document.getElementById('player-image');
-const result = document.getElementById('Result');
+const resultDisplay = document.getElementById('Result');
 const scoreboard = document.getElementById('Scoreboard');
 const goblinDisplay = document.getElementById('goblin-list');
 /* State */
+let defeated = 0;
 let result = '';
 let player = {
     type: 'pekka',
@@ -58,7 +59,7 @@ const goblinTypes = [
 ];
 
 const playerMoves = [0, 1, 1, 2, 2, 2, 2, 4, 4, 4, 5, 5, 10];
-const goblinMoves = [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 10]
+const goblinMoves = [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 10];
 /* Events */
 function displayPlayer() {
     playerHp.textContent = Math.max(0, player.hp);
@@ -70,35 +71,57 @@ function displayPlayer() {
 }
 
 function displayResult() {
-    result.textContent = result;
+    resultDisplay.textContent = result;
 }
 
 function displayScoreboard() {
     scoreboard.textContent = `You have killed ${defeated} goblins.`;
 }
 
-function displayGoblin(); {
+function displayGoblin() {
     goblinDisplay.innerHTML = '';
 
-    for (const goblin of goblins) {
+    for (let goblin of goblins) {
         const goblinEl = renderGoblin(goblin);
+        console.log(goblinEl);
         goblinDisplay.append(goblinEl);
-        
-//         const playerMove = getRandomItem(playerMoves)
-//         const goblinMove = getRandomItem(goblinMoves)
-        
-//         goblinEl.addEventListener('click', () => {
-//             if (goblin.hp < 1) {
-//                 result = `C'mon man he's already dead.`;
-//                 displayResult();
-//             }
-//         })
-        
-        
-//     }
-// }
+
+        goblinEl.addEventListener('click', () => {
+            console.log('clicked');
+            if (goblin.hp < 1) {
+                result = `C'mon man he's already dead.`;
+                displayResult();
+                return;
+            }
+
+            const playerMove = getRandomItem(playerMoves);
+            const goblinMove = getRandomItem(goblinMoves);
+
+            player.hp = Math.max(0, player.hp - goblinMove);
+            goblin.hp = Math.max(0, goblin.hp - playerMove);
+            result = '';
+
+            if (goblinMove === 0) {
+                result += `${goblin.name} has missed`;
+            } else {
+                result += `${goblin.name} has hit you and did ${goblinMove} hitpoints`;
+            }
+
+            if (playerMove === 0) {
+                result += 'Wow you actually missed. ';
+            } else {
+                result += `You've hit ${goblin.name} and did ${playerMove} in damage. `;
+            }
+
+            if (goblin.hp < 1) {
+                defeated++;
+                displayScoreboard();
+            }
+            displayPlayer();
+        });
+    }
+}
 // (don't forget to call any display functions you want to run on page load!)
 // testing
 displayPlayer();
-displayResult();
-displayScoreboard();
+displayGoblin();

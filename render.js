@@ -17,4 +17,5 @@ export function renderGoblin(goblin) {
         goblinImage.src = `assets/goblin.png`;
     }
     li.append(hp, goblinImage, goblinName);
+    return li;
 }
