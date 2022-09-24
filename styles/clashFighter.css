@@ -33,3 +33,8 @@
     font-size: 50px;
     font-weight: 900;
 }
+
+.remove-button {
+    display: grid;
+    justify-items: right;
+}

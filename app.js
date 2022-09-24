@@ -60,8 +60,8 @@ const goblinTypes = [
     cyclops,
 ];
 
-const playerMoves = [2];
-const goblinMoves = [1];
+const playerMoves = [1, 1, 1, 1, 0, 0, 2, 2, 4, 4, 4];
+const goblinMoves = [1, 1, 1, 1, 2, 2, 2, 4, 5];
 /* Events */
 function displayPlayer() {
     playerHp.textContent = Math.max(0, player.hp);
