@@ -7,6 +7,7 @@ const playerImage = document.getElementById('player-image');
 const resultDisplay = document.getElementById('Result');
 const scoreboard = document.getElementById('Scoreboard');
 const goblinDisplay = document.getElementById('goblin-list');
+const addGoblinForm = document.getElementById('add-goblin-form');
 /* State */
 let defeated = 0;
 let result = '';
@@ -69,6 +70,24 @@ function displayPlayer() {
         playerImage.src = 'assets/miniPekka.png';
     }
 }
+
+addGoblinForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(addGoblinForm);
+    const newGoblinTypes = getRandomItem(goblinTypes);
+    console.log(newGoblinTypes);
+
+    const goblin = {
+        name: formData.get('name'),
+        type: newGoblinTypes.type,
+        hp: newGoblinTypes.hp,
+    };
+    goblins.push(goblin);
+
+    result = `${goblin.name} the ${goblin.type} has arrived`;
+    displayGoblin();
+    displayResult();
+});
 
 function displayResult() {
     resultDisplay.textContent = result;
