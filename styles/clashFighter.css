@@ -1,0 +1,40 @@
+#goblin-list img {
+    width: 100px;
+    justify-items: start;
+}
+
+.player img {
+    width: 300px;
+    height: auto;
+}
+.banner {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ''
+        '';
+    justify-items: center;
+}
+
+#goblin {
+    grid-area: goblin;
+    display: grid;
+    justify-items: right;
+}
+
+.name {
+    font-size: larger;
+}
+
+.stat {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.remove-button {
+    display: grid;
+    justify-items: right;
+}
